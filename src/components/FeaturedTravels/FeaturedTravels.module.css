@@ -1,0 +1,48 @@
+/* src/components/FeaturedTravels/FeaturedTravels.module.css */
+.featuredTravelsSection {
+  background-color: var(--background-light); /* Un fondo ligeramente diferente para la sección */
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 50px; /* Más espacio antes del grid de tarjetas */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.travelsGrid {
+  display: grid;
+  /* Crea columnas que se ajustan automáticamente. Mínimo 300px, máximo 1fr (fracción del espacio disponible) */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; /* Espacio entre tarjetas */
+}
+
+.seeAllButtonContainer {
+  text-align: center;
+  margin-top: 50px; /* Espacio sobre el botón "Ver Todos" */
+}
+/* El estilo del botón "button button-primary" viene de global.css */
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .sectionSubtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .travelsGrid {
+    /* En pantallas más pequeñas, podrías querer forzar menos columnas o ajustar el minmax */
+    /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
+    gap: 25px;
+  }
+}
+@media (max-width: 480px) {
+  .travelsGrid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles muy pequeños */
+    gap: 20px;
+  }
+}

@@ -1,0 +1,88 @@
+/* src/components/Testimonials/TestimonialCard.module.css */
+.testimonialCard {
+  background-color: var(--light-color);
+  padding: 25px 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Para alinear tarjetas en un grid o carrusel */
+  border-left: 5px solid var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonialCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 3px solid var(--secondary-color); /* Borde para el avatar */
+  flex-shrink: 0; /* Evita que se encoja */
+}
+.avatarPlaceholder {
+  font-size: 60px; /* Tamaño del icono si no hay imagen */
+  color: var(--border-color);
+  border: none; /* Sin borde para el placeholder */
+}
+
+.userInfo {
+  flex-grow: 1;
+}
+.userName {
+  margin: 0 0 3px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+.userLocation {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  margin: 0;
+  font-style: italic;
+}
+
+.ratingContainer {
+  margin-bottom: 15px;
+  color: var(--accent-color); /* Color para estrellas llenas */
+  display: flex; /* Para alinear estrellas */
+  gap: 3px; /* Espacio entre estrellas */
+}
+.starFilled {
+  /* color ya definido por el contenedor */
+}
+.starEmpty {
+  color: var(--border-color); /* Color para estrellas vacías */
+}
+
+.testimonialContent {
+  position: relative; /* Para el icono de comillas */
+  padding-top: 10px; /* Espacio para las comillas si están arriba */
+}
+.quoteIcon {
+  font-size: 2rem; /* Tamaño de las comillas */
+  color: var(--secondary-color);
+  opacity: 0.25;
+  position: absolute;
+  top: -5px; /* Posicionamiento de las comillas */
+  left: -5px; /* Ajusta según tu gusto */
+}
+.testimonialText {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  /* font-style: italic; */ /* Opcional */
+  position: relative; /* Para que esté sobre las comillas si se superponen */
+  z-index: 1;
+  padding-left: 5px; /* Pequeño espacio si las comillas están a la izquierda */
+}

@@ -1,0 +1,132 @@
+/* src/components/ContactWhatsApp/ContactWhatsApp.module.css */
+.contactSection {
+  background-color: var(--background-medium); /* Un fondo suave para la sección */
+  /* background-image: linear-gradient(to bottom, var(--background-light) 0%, var(--background-medium) 100%); */
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.contactForm {
+  max-width: 750px; /* Un poco más ancho para dos columnas */
+  margin: 0 auto;
+  padding: 35px 40px;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--primary-color);
+}
+
+.formRow {
+  display: flex;
+  gap: 25px; /* Espacio entre campos de la misma fila */
+  margin-bottom: 20px;
+}
+.formRow .formGroup {
+  flex: 1; /* Cada grupo ocupa el mismo espacio en la fila */
+  margin-bottom: 0; /* El margen ya está en formRow */
+}
+
+.formGroup {
+  margin-bottom: 25px; /* Espacio entre grupos de campos (si no están en formRow) */
+}
+
+.formGroup label {
+  display: flex; /* Para alinear el ícono y el texto */
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--dark-color);
+  font-size: 0.95rem;
+}
+.inputIcon {
+  margin-right: 8px;
+  color: var(--primary-color);
+  font-size: 1.1em; /* Relativo al label */
+}
+.required {
+    color: var(--accent-color); /* O un rojo: #dc3545; */
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: var(--font-family-sans-serif);
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  background-color: var(--background-light); /* Un fondo ligeramente diferente */
+}
+.formInput::placeholder,
+.formTextarea::placeholder {
+    color: #999;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15); /* Ajusta el color al primario */
+}
+
+.formTextarea {
+  resize: vertical; /* Permite redimensionar verticalmente */
+  min-height: 120px;
+}
+
+.submitButton {
+  display: flex; /* Para centrar el contenido y el icono */
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espacio entre el texto y los iconos */
+  width: 100%;
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  background-color: #25D366; /* Color de WhatsApp */
+  color: var(--light-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px; /* Espacio sobre el botón */
+}
+.submitButton:hover {
+  background-color: #1DAE54; /* WhatsApp más oscuro al pasar el mouse */
+  color: var(--light-color); /* Asegura que el color del texto no cambie si hereda de .button */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+.submitButton svg { /* Estilo general para iconos en el botón */
+  font-size: 1.3em; /* Un poco más grande que el texto */
+}
+.sendIcon {
+    margin-left: 5px; /* Espacio extra para el icono de enviar */
+}
+
+/* Responsive para el formulario */
+@media (max-width: 768px) {
+  .contactForm {
+    padding: 25px 20px;
+  }
+  .formRow {
+    flex-direction: column; /* Apila los campos en móviles */
+    gap: 0; /* Sin gap si están apilados */
+  }
+  .formRow .formGroup {
+    margin-bottom: 20px; /* Espacio entre campos apilados */
+  }
+  .formGroup:last-child { /* Evita doble margen en el último elemento */
+    margin-bottom: 0; 
+  }
+}

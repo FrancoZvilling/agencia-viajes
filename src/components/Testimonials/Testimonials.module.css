@@ -1,0 +1,111 @@
+/* src/components/Testimonials/Testimonials.module.css */
+.testimonialsSection {
+  background-color: var(--background-light); /* O el color que prefieras */
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Estilos para el Grid de Testimonios */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ajusta minmax según necesites */
+  gap: 30px;
+}
+
+/* --- Estilos para Swiper (si decides implementarlo) --- */
+/* .testimonialSwiper {
+  padding-bottom: 60px !important; /* Espacio para la paginación y botones
+  overflow: visible !important; /* Para que las sombras de las tarjetas no se corten 
+} */
+
+/* .swiperSlide {
+  height: auto !important; /* Asegura que Swiper calcule bien la altura de cada slide 
+  display: flex !important; /* Para que TestimonialCard ocupe todo el alto del slide 
+  padding: 5px; /* Pequeño padding para que la sombra de la tarjeta no se corte 
+} */
+/* .swiperSlide > div { /* El TestimonialCard dentro del SwiperSlide 
+  width: 100%;
+} */
+
+/* Contenedor personalizado para los controles del Swiper */
+/* .swiperControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+} */
+
+/* Paginación personalizada de Swiper */
+/* .swiperPaginationCustom {
+    position: static !important; /* Para que no sea absoluto y se integre en el flujo 
+    width: auto !important;
+    display: flex;
+    gap: 8px;
+}
+.swiperPaginationCustom .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: var(--border-color);
+  opacity: 1;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.swiperPaginationCustom .swiper-pagination-bullet-active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+} */
+
+/* Botones de navegación personalizados de Swiper */
+/* .swiperButtonNextCustom,
+.swiperButtonPrevCustom {
+  cursor: pointer;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.swiperButtonNextCustom:hover,
+.swiperButtonPrevCustom:hover {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.swiperButtonNextCustom.swiper-button-disabled,
+.swiperButtonPrevCustom.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: default;
+    background-color: var(--background-medium);
+    color: var(--text-color);
+} */
+/* --- Fin de estilos para Swiper --- */
+
+
+@media (max-width: 768px) {
+  .testimonialsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta para tablets */
+    gap: 25px;
+  }
+}
+@media (max-width: 480px) {
+  .testimonialsGrid {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+    gap: 20px;
+  }
+}

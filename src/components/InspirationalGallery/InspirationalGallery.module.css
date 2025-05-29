@@ -1,0 +1,136 @@
+/* src/components/InspirationalGallery/InspirationalGallery.module.css */
+.gallerySection {
+  background-color: var(--light-color); /* O un color de fondo que contraste bien */
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.galleryGrid {
+  display: grid;
+  /* Crea columnas que se ajustan automáticamente. Mínimo 280px, máximo 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; /* Espacio entre imágenes */
+  /* Para un efecto Masonry más complejo, se necesitaría JS o CSS Grid más avanzado,
+     o asegurar que las imágenes tengan alturas proporcionales si el número de columnas es fijo.
+     Por ahora, con auto-fit y una altura fija para .galleryItem, se alinearán bien. */
+}
+
+.galleryItem {
+  position: relative; /* Para el posicionamiento del overlay */
+  overflow: hidden; /* Para que el borde redondeado afecte a la imagen y el overlay */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  cursor: pointer; /* Indica que es interactivo */
+  height: 300px; /* Altura fija para los ítems, ajusta según tus imágenes */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Para el hover de Framer Motion */
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el contenedor manteniendo la relación de aspecto */
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transición suave para el zoom */
+}
+.galleryItem:hover .galleryImage {
+  transform: scale(1.1); /* Efecto de zoom sutil al pasar el mouse */
+}
+
+.galleryOverlay {
+  position: absolute;
+  bottom: 0; /* Se posiciona en la parte inferior */
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0) 100%);
+  color: var(--light-color);
+  padding: 20px 20px 15px; /* Espaciado interno del overlay */
+  box-sizing: border-box;
+
+  /* Transición para la aparición del texto */
+  opacity: 0;
+  transform: translateY(20px); /* Empieza un poco abajo */
+  transition: opacity 0.4s ease-out 0.1s, transform 0.4s ease-out 0.1s;
+}
+.galleryItem:hover .galleryOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.galleryDestination {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--light-color); /* Asegura que el título sea blanco */
+  line-height: 1.3;
+}
+
+.galleryDescription {
+  font-size: 0.85rem;
+  margin-bottom: 0; /* Ajustar si añades un botón */
+  line-height: 1.4;
+  /* Limitar a 2 líneas si es necesario */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estilos para el botón opcional de explorar */
+/* .exploreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  margin-top: 10px;
+  background-color: var(--accent-color);
+  color: var(--dark-color);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color var(--transition-speed) ease;
+}
+.exploreButton:hover {
+  background-color: #ffb700; /* Un poco más oscuro el amarillo 
+} */
+
+/* Estilos para el botón opcional "Ver Más Inspiración" */
+/* .seeMoreContainer {
+    text-align: center;
+    margin-top: 40px;
+} */
+
+
+@media (max-width: 768px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  .galleryItem {
+    height: 250px; /* Menor altura en tablets/móviles */
+  }
+  .galleryDestination {
+    font-size: 1.1rem;
+  }
+  .galleryDescription {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+    .galleryGrid {
+        grid-template-columns: 1fr; /* Una columna en móviles muy pequeños */
+    }
+    .galleryItem {
+        height: 220px;
+    }
+}

@@ -1,0 +1,139 @@
+/* src/components/Footer/Footer.module.css */
+.footer {
+  background-color: var(--dark-color);
+  color: var(--background-medium);
+  padding: 60px 0 20px;
+  font-size: 0.9rem;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.footerColumn {
+  /* No necesita estilos específicos si el grid maneja el layout */
+}
+
+.footerLogo {
+  display: inline-flex; /* Para que el logo no ocupe todo el ancho */
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-bottom: 15px;
+  font-family: var(--font-family-headings);
+}
+.logoIcon {
+  margin-right: 8px;
+  font-size: 1.3em;
+}
+.logoHighlight {
+  color: var(--accent-color);
+}
+
+.footerSlogan {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--border-color); /* Un gris más claro */
+}
+
+.footerTitle {
+  font-size: 1.15rem;
+  color: var(--light-color);
+  margin-bottom: 20px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+}
+.footerTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 35px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+}
+
+.footerLinks {
+  list-style: none;
+  padding: 0;
+}
+.footerLinks li {
+  margin-bottom: 10px;
+}
+.footerLinks li a {
+  color: var(--background-medium);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease, padding-left var(--transition-speed) ease;
+}
+.footerLinks li a:hover {
+  color: var(--accent-color);
+  padding-left: 5px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px; /* Espacio entre iconos */
+  margin-bottom: 15px;
+}
+.socialIcons a {
+  color: var(--background-medium);
+  font-size: 1.5rem;
+  transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+.socialIcons a:hover {
+  color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.footerContact {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--border-color);
+}
+
+.footerBottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #4f4f4f; /* Un separador sutil */
+  font-size: 0.85rem;
+}
+.footerBottom p {
+  margin-bottom: 5px;
+  color: var(--border-color);
+}
+.heartIcon {
+  color: var(--accent-color);
+}
+
+/* Responsive para el Footer */
+@media (max-width: 768px) {
+  .footerGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustar para mejor encaje */
+    gap: 25px;
+  }
+  .footerColumn {
+    text-align: center; /* Centrar contenido de columnas en móvil */
+  }
+  .footerLogo {
+    justify-content: center; /* Centrar el logo */
+  }
+  .footerTitle::after {
+    left: 50%;
+    transform: translateX(-50%); /* Centrar la línea decorativa */
+  }
+  .socialIcons {
+    justify-content: center; /* Centrar iconos sociales */
+  }
+}
+@media (max-width: 480px) {
+  .footerGrid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles muy pequeños */
+  }
+}

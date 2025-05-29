@@ -1,0 +1,202 @@
+/* src/components/TravelCard/TravelCard.module.css */
+.travelCard {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden; /* Importante para que el borde redondeado afecte a la imagen */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Para que todas las tarjetas en un grid tengan la misma altura */
+  transition: box-shadow 0.3s ease; /* Transición para el hover manejado por Framer Motion */
+}
+
+/* Framer Motion se encarga de transform y box-shadow en hover,
+   pero podemos dejar una transición base para box-shadow si se desea. */
+/* .travelCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+} */
+
+.cardLink {
+  text-decoration: none;
+  color: inherit; /* Hereda el color del texto del padre */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* El link ocupa toda la tarjeta */
+}
+
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+  height: 220px; /* Altura fija para la imagen, ajusta según necesites */
+  overflow: hidden; /* Para el efecto de zoom de la imagen y el overlay */
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el contenedor manteniendo la relación de aspecto */
+  transition: transform 0.4s ease-out;
+}
+.travelCard:hover .cardImage {
+  transform: scale(1.05); /* Efecto de zoom sutil al pasar el mouse */
+}
+
+.discountBadge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--accent-color);
+  color: var(--dark-color);
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Inicialmente transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  z-index: 0; /* Detrás de la insignia de descuento si existe */
+}
+.travelCard:hover .imageOverlay {
+  background-color: rgba(0, 0, 0, 0.4); /* Oscurece al pasar el mouse */
+  opacity: 1;
+}
+
+.overlayText {
+  color: var(--light-color);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 15px;
+  border: 2px solid var(--light-color);
+  border-radius: var(--border-radius);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s; /* Delay para aparecer */
+}
+.travelCard:hover .overlayText {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.cardContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* El contenido crece para ocupar el espacio restante */
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  line-height: 1.3;
+  /* Para limitar a 2 líneas y añadir puntos suspensivos */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.3rem * 1.3 * 2); /* Altura para 2 líneas */
+}
+
+.cardDestination,
+.cardDuration {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+.icon {
+  margin-right: 8px;
+  color: var(--secondary-color);
+  flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  line-height: 1.5;
+  flex-grow: 1; /* La descripción empuja el footer hacia abajo */
+  /* Limitar a 3 líneas */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(0.95rem * 1.5 * 3); /* Altura para 3 líneas */
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Empuja el footer al final de la tarjeta */
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.cardPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  display: flex;
+  align-items: baseline; /* Alinea mejor el símbolo de moneda y el precio */
+}
+.iconPrice {
+  margin-right: 5px;
+  font-size: 1em; /* Relativo al font-size de .cardPrice */
+  color: var(--accent-color); /* Hereda o especifica */
+}
+.originalPrice {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  text-decoration: line-through;
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+/* Opcional: si quisieras un botón en lugar de que toda la tarjeta sea linkable */
+/* .detailsButton {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+.detailsButton:hover {
+    background-color: var(--primary-color);
+} */
+
+@media (max-width: 768px) {
+  .cardTitle {
+    font-size: 1.2rem;
+    min-height: calc(1.2rem * 1.3 * 2);
+  }
+  .cardPrice {
+    font-size: 1.1rem;
+  }
+  .cardImageContainer {
+    height: 200px; /* Un poco menos de altura en móviles */
+  }
+}
+
+@media (max-width: 480px) {
+    .cardImageContainer {
+        height: 180px;
+    }
+}

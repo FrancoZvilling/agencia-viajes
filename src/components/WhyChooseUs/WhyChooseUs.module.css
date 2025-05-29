@@ -1,0 +1,103 @@
+/* src/components/WhyChooseUs/WhyChooseUs.module.css */
+.whyChooseUsSection {
+  background-color: var(--background-medium); /* Un color de fondo que contraste con secciones adyacentes */
+  /* O un degradado sutil: */
+  /* background: linear-gradient(180deg, var(--background-light) 0%, var(--background-medium) 100%); */
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 50px; /* Más espacio antes del grid de características */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.featuresGrid {
+  display: grid;
+  /* Ajusta minmax para controlar cuántos ítems caben por fila.
+     Ej: minmax(280px, 1fr) para ítems más pequeños, minmax(320px, 1fr) para más grandes. */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; /* Espacio entre los ítems */
+}
+
+.featureItem {
+  background-color: var(--light-color);
+  padding: 30px 25px;
+  text-align: center;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid transparent; /* Borde superior sutil para el hover */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido verticalmente si la altura varía */
+}
+/* El whileHover de Framer Motion maneja el transform y box-shadow,
+   pero la transición base en CSS ayuda a que se vea suave si JS tarda en cargar */
+.featureItem:hover {
+  border-top-color: var(--accent-color); /* Destaca el borde superior al pasar el mouse */
+}
+
+.featureIconContainer {
+  font-size: 2.8rem; /* Tamaño grande para el icono */
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  line-height: 1; /* Evita que el icono afecte mucho la altura */
+  background-color: rgba(var(--primary-color-rgb, 0, 119, 182), 0.1); /* Fondo suave para el icono */
+  /* Asegúrate de definir --primary-color-rgb en variables.css si usas rgba con variables */
+  /* :root { --primary-color-rgb: 0, 119, 182; } */
+  width: 70px;  /* Tamaño fijo para el contenedor del icono */
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.featureIconContainer svg {
+  display: block; /* Ayuda con la alineación vertical precisa del icono SVG */
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.featureDescription {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  flex-grow: 1; /* Para que las descripciones ocupen el espacio y alineen los ítems si tienen diferente altura */
+}
+
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Ajusta para tablets */
+    gap: 25px;
+  }
+  .featureItem {
+    padding: 25px 20px;
+  }
+  .featureIconContainer {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  .featureTitle {
+    font-size: 1.15rem;
+  }
+}
+@media (max-width: 480px) {
+  .featuresGrid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    gap: 20px;
+  }
+}

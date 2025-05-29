@@ -1,0 +1,180 @@
+/* src/components/HeroSection/HeroSection.module.css */
+.heroSection {
+  height: 100vh; /* Ocupa toda la altura de la ventana gráfica */
+  min-height: 550px; /* Altura mínima para asegurar visibilidad en pantallas pequeñas */
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  text-align: center;
+  color: var(--light-color);
+  position: relative; /* Para el overlay y el indicador de scroll */
+  overflow: hidden; /* Evita que elementos se desborden */
+  
+  /* Imagen de fondo - REEMPLAZA ESTA URL con tu propia imagen de alta calidad */
+  /* Puedes guardarla en src/assets/images/ y usar url('../../assets/images/tu-imagen.jpg') */
+  background: url('../../assets/images/rio.jpg') no-repeat center center/cover;
+  /* Ejemplo con placeholder: */
+  /* background: url('https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=Travel+Adventure') no-repeat center center/cover; */
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+  /* O un color sólido: background: rgba(0, 0, 0, 0.5); */
+  z-index: 1; /* Detrás del contenido, sobre la imagen */
+}
+
+.heroContent {
+  position: relative; /* Para estar sobre el overlay */
+  z-index: 2;
+  max-width: 850px; /* Ancho máximo del contenido */
+  padding: 20px; /* Espacio por si el container no lo tiene */
+}
+
+.heroTitle {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--light-color); /* Asegura que sea blanco aunque las variables cambien */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  color: var(--background-light); /* Un blanco un poco menos intenso */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  max-width: 700px; /* Para que no sea demasiado ancho */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroCtaContainer {
+  display: flex;
+  flex-direction: column; /* Apilados por defecto */
+  align-items: center;
+  gap: 1rem; /* Espacio entre elementos del CTA */
+}
+
+.heroPrice {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem; /* Espacio si los botones están debajo */
+  display: inline-block; /* Para que no ocupe todo el ancho */
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 8px 18px;
+  border-radius: var(--border-radius);
+}
+
+.heroButtonPrimary, .heroButtonSecondary {
+  padding: 14px 35px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  min-width: 220px; /* Ancho mínimo para los botones */
+  text-transform: uppercase;
+}
+
+.heroButtonPrimary {
+    /* Estilos heredados de .button global */
+    /* background-color: var(--accent-color); */
+    /* color: var(--dark-color); */
+}
+
+.heroButtonSecondary {
+    /* Estilos heredados de .button y .button-primary global */
+    /* background-color: var(--primary-color); */
+    /* color: var(--light-color); */
+    /* O si quieres un botón "outline": */
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+.heroButtonSecondary:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+}
+
+/* Indicador de scroll animado (opcional) */
+.scrollIndicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+  z-index: 2;
+}
+.scrollIndicator span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  animation: scrollAnim 2s infinite;
+}
+@keyframes scrollAnim {
+  0% { opacity: 1; top: 8px; }
+  50% { opacity: 0; top: 18px; }
+  100% { opacity: 1; top: 8px; }
+}
+
+
+/* Media Queries para Responsividad */
+@media (min-width: 768px) {
+  .heroCtaContainer {
+    flex-direction: row; /* Botones en línea en pantallas más grandes */
+    justify-content: center;
+  }
+  .heroPrice {
+    margin-bottom: 0; /* Sin margen inferior si los botones están al lado */
+    margin-right: 1.5rem; /* Espacio hacia los botones */
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    height: auto; /* Altura automática en móviles */
+    min-height: 80vh;
+    padding: 100px 0 60px; /* Más padding arriba por el navbar fijo, y abajo */
+  }
+  .heroTitle {
+    font-size: 2.5rem; /* Título más pequeño en móviles */
+  }
+  .heroSubtitle {
+    font-size: 1.1rem; /* Subtítulo más pequeño */
+    margin-bottom: 2rem;
+  }
+  .heroButtonPrimary, .heroButtonSecondary {
+    padding: 12px 28px;
+    font-size: 1rem;
+    width: 90%; /* Hacer botones más anchos en móvil */
+    max-width: 300px;
+  }
+  .scrollIndicator {
+    bottom: 20px; /* Un poco más arriba en móvil */
+  }
+}
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+    .heroPrice {
+        font-size: 1.3rem;
+        padding: 6px 14px;
+    }
+}

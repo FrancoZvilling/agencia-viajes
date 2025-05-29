@@ -1,0 +1,184 @@
+/* src/components/Navbar/Navbar.module.css */
+.navbar {
+  background: transparent; /* Inicialmente transparente */
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  position: fixed; /* Navbar fijo en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.navbar.scrolled {
+  background: var(--light-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.navbarLogo {
+  color: var(--light-color); /* Color inicial del logo (para hero oscuro) */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-family-headings);
+  transition: color 0.3s ease;
+}
+.navbar.scrolled .navbarLogo {
+  color: var(--primary-color); /* Color del logo cuando se hace scroll */
+}
+.logoIcon {
+  margin-right: 8px;
+  font-size: 1.5em; /* Relativo al font-size del logo */
+}
+.logoHighlight {
+  color: var(--accent-color);
+}
+/* .logoImage { height: 40px; margin-right: 10px; } */
+
+.menuIcon {
+  display: none; /* Oculto en desktop */
+  font-size: 1.8rem;
+  color: var(--light-color); /* Color inicial del icono */
+  cursor: pointer;
+}
+.navbar.scrolled .menuIcon {
+  color: var(--primary-color); /* Color del icono con scroll */
+}
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.navItem {
+  height: 80px; /* Para alinear verticalmente los links */
+  display: flex;
+  align-items: center;
+}
+
+.navLinks {
+  color: var(--light-color); /* Color inicial de los links */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  font-weight: 600;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+.navbar.scrolled .navLinks {
+  color: var(--dark-color); /* Color de links con scroll */
+}
+.navLinks:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+.navLinks.activeLink {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+.navbar.scrolled .navLinks.activeLink {
+    border-bottom-color: var(--accent-color); /* Asegurar que el borde se mantenga */
+}
+
+
+.navBtnItem {
+  margin-left: 1rem;
+}
+.navButton { /* Hereda estilos de .button de global.css */
+  padding: 8px 22px;
+  font-size: 0.95rem;
+  /* Los colores se definen en global.css o pueden sobreescribirse aquí */
+  /* background-color: var(--accent-color); */
+  /* color: var(--dark-color); */
+}
+.navbar.scrolled .navButton {
+    /* Si quieres que el botón cambie con el scroll */
+}
+
+/* Estilos para el menú móvil */
+@media screen and (max-width: 960px) {
+  .menuIcon {
+    display: block; /* Muestra el icono de hamburguesa */
+    position: absolute;
+    top: 50%;
+    right: 20px; /* Ajusta según el padding del .container */
+    transform: translateY(-50%);
+  }
+
+  .navMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: calc(100vh - 80px);  Ocupa el alto menos el navbar */
+    position: absolute;
+    top: 80px; /* Debajo del navbar */
+    left: -100%; /* Oculto fuera de la pantalla */
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: var(--light-color); /* Fondo para el menú desplegado */
+    padding: 2rem 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .navMenu.active {
+    left: 0;
+    opacity: 1;
+    z-index: 1; /* Para estar sobre otro contenido si es necesario */
+  }
+
+  .navItem {
+    width: 100%;
+    height: auto; /* Altura automática para los ítems en columna */
+  }
+
+  .navLinks {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    display: table;
+    color: var(--dark-color); /* Links oscuros en menú móvil */
+    border-bottom: none; /* Sin borde inferior en móvil */
+  }
+  .navLinks:hover,
+  .navLinks.activeLink {
+    color: var(--accent-color);
+    border-bottom: none;
+    background-color: var(--background-medium); /* Ligero feedback al pasar el mouse */
+  }
+
+  .navBtnItem {
+    width: 100%;
+    padding: 1rem 2rem; /* Más padding para el área del botón */
+    margin-left: 0;
+  }
+  .navBtnLink {
+      display: block; /* Para que el botón ocupe el ancho */
+  }
+  .navButton {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--primary-color); /* Botón más prominente en móvil */
+    color: var(--light-color);
+  }
+  .navButton:hover {
+    background-color: var(--secondary-color);
+  }
+}
